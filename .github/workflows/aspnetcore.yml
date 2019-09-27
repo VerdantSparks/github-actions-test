@@ -17,7 +17,7 @@ jobs:
       run: dotnet publish --configuration Release -o myapp
       
     # deploy to azure app service
-    - uses: azure/webapps-deploy
+    - uses: azure/webapps-deploy@v1
       with:
         app-name: github-action-webapp
         publish-profile: ${{ secrets.azureWebAppPP }}
