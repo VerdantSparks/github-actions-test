@@ -14,10 +14,11 @@ jobs:
       with:
         dotnet-version: 3.0.100
     - name: Build with dotnet
-      run: dotnet build --configuration Release
+      run: dotnet publish --configuration Release -o myapp
       
     # deploy to azure app service
     - uses: azure/webapps-deploy
       with:
         app-name: github-action-webapp
         publish-profile: ${{ secrets.azureWebAppPP }}
+        package: './myapp'
