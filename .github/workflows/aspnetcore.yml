@@ -14,7 +14,7 @@ jobs:
       with:
         dotnet-version: 3.0.100
     - name: Build with dotnet
-      run: dotnet publish --configuration Release -o myapp
+      run: dotnet publish --configuration Release -r linux-x64 -o myapp
       
     # deploy to azure app service
     - uses: azure/webapps-deploy@v1
