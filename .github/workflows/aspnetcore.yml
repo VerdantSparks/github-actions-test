@@ -3,7 +3,7 @@ name: ASP.NET Core CI
 on: [push]
 
 jobs:
-  build:
+  build-and-deploy:
 
     runs-on: ubuntu-latest
     
@@ -15,3 +15,9 @@ jobs:
         dotnet-version: 3.0.100
     - name: Build with dotnet
       run: dotnet build --configuration Release
+      
+    # deploy to azure app service
+    - uses: azure/appservice-actions/webapp@master
+      with:
+        app-name: github-action-webapp
+        publish-profile: ${{ secrets.azureWebAppPP }}
